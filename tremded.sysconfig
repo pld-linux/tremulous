@@ -1,0 +1,2 @@
+# default: server disabled
+# TREM_OPTS="+set dedicated 1"

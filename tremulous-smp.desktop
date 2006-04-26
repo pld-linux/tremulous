@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Tremulous SMP
+Comment=Tremulous for linux
+Comment[pl]=Tremulous dla Linuksa
+Exec=tremulous-smp
+Icon=tremulous.xpm
+Terminal=false
+Type=Application
+Categories=Game;X-FPPGame;
+Encoding=UTF-8
+# vi: encoding=utf-8

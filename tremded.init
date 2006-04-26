@@ -1,0 +1,88 @@
+#!/bin/sh
+#
+# tremded		This is the init script for starting
+#		up the Tremulous dedicated server
+#
+# chkconfig:	345 85 25
+# description:	Starts and stops the Tremulous dedicated server.
+#
+# processname:	tremded
+
+. /etc/rc.d/init.d/functions
+. /etc/sysconfig/network
+
+if [ -f /etc/sysconfig/tremded ]; then
+	. /etc/sysconfig/tremded
+else
+	nls "Error: %s not found" /etc/sysconfig/tremded
+	nls " Tremulous dedicated server can't be run."
+	exit 1
+fi
+
+if [ ! "$TREM_OPTS" ]; then
+	nls "Error: TREM_OPTS not found or is empty"
+	nls " Tremulous dedicated server can't be run."
+	exit 1
+fi
+
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network -a "$1" != stop -a "$1" != status -a "$1" != init ]; then
+		msg_network_down "Tremulous dedicated server"
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+action="$1"
+RETVAL=0
+case "$action" in
+  start)
+	if [ ! -f /var/lock/subsys/tremded ]; then
+		msg_starting "Tremulous dedicated server"
+		if [ ! -x /usr/bin/tremded ]; then
+			fail
+			exit 1
+		fi
+		su -s /bin/sh - tremulous -c "screen -dmS tremded /usr/bin/tremded ${TREM_OPTS}"
+		touch /var/lock/subsys/tremded && ok || fail
+	else
+		msg_already_running "Tremulous dedicated server"
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/tremded ]; then
+		msg_stopping "Tremulous dedicated server"
+		SCREEN_PID=$(su -s /bin/sh - tremulous -c "screen -ls" | awk -F. '/tremded/{print $1}')
+		if [ ! -z "$SCREEN_PID" ]; then
+			TREM_PID=`pstree -p ${SCREEN_PID} |\
+				sed -e 's:^.*tremded:: ; s:(:: ; s:)::'`
+			if [ ! -z "$TREM_PID" ]; then
+				kill $TREM_PID
+				RETVAL=$?
+				[ $RETVAL -eq 0 ] && ok
+			else
+				fail
+			fi
+		else
+			fail
+		fi
+		rm -f /var/lock/subsys/tremded >/dev/null 2>&1
+	fi
+	exit 0
+	;;
+  status)
+	status tremded
+	screen -ls | grep tremded
+	exit $?
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL

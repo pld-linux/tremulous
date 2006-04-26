@@ -1,0 +1,11 @@
+--- tremulous-1.1.0-src/Makefile~	2006-04-26 23:07:42.000000000 +0200
++++ tremulous-1.1.0-src/Makefile	2006-04-26 23:24:48.000000000 +0200
+@@ -639,7 +639,7 @@
+ ifneq ($(BUILD_CLIENT),0)
+   TARGETS += $(B)/tremulous.$(ARCH)$(BINEXT)
+   ifneq ($(BUILD_CLIENT_SMP),0)
+-    TARGETS += $(B)/tremulous.$(ARCH)$(BINEXT)
++    TARGETS += $(B)/tremulous-smp.$(ARCH)$(BINEXT)
+   endif
+ endif
+ 
