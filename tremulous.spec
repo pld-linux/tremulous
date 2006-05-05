@@ -61,7 +61,7 @@ also removing their ability to respawn by destroying their spawn
 structures.
 
 %description -l pl
-Tremulous to wolnodostêpna, otwarto-¼ród³owa gra mieszaj±ca cechy
+Tremulous to wolnodostêpna gra z otwartymi ¼ród³ami ³±cz±ca cechy
 dru¿ynowej FPS (strzelaniny widzianej oczami bohatera) z elementami
 RTS (strategii w czasie rzeczywistym). Gracze mog± wybraæ miêdzy dwoma
 odmiennymi rasami: obcy lub ludzie. Obie dru¿yny mog± budowaæ
@@ -140,7 +140,7 @@ structures.
 Version for multi processor machine.
 
 %description smp -l pl
-Tremulous to wolnodostêpna, otwarto-¼ród³owa gra mieszaj±ca cechy
+Tremulous to wolnodostêpna gra z otwartymi ¼ród³ami ³±cz±ca cechy
 dru¿ynowej FPS (strzelaniny widzianej oczami bohatera) z elementami
 RTS (strategii w czasie rzeczywistym). Gracze mog± wybraæ miêdzy dwoma
 odmiennymi rasami: obcy lub ludzie. Obie dru¿yny mog± budowaæ
