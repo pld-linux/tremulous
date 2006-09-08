@@ -7,7 +7,7 @@ Summary:	First-person shooter with elements of strategy game
 Summary(pl):	Strzelanina w pierwszej osobie z elementami strategii
 Name:		tremulous
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Games
 Source0:	%{name}-%{version}-src.tar.gz
