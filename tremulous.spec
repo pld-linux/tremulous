@@ -4,7 +4,7 @@
 %bcond_without	openal		# don't use OpenAL
 
 Summary:	First-person shooter with elements of strategy game
-Summary(pl):	Strzelanina w pierwszej osobie z elementami strategii
+Summary(pl.UTF-8):   Strzelanina w pierwszej osobie z elementami strategii
 Name:		tremulous
 Version:	1.1.0
 Release:	2
@@ -60,32 +60,32 @@ team. This is achieved by not only killing the opposing players but
 also removing their ability to respawn by destroying their spawn
 structures.
 
-%description -l pl
-Tremulous to wolnodostêpna gra z otwartymi ¼ród³ami ³±cz±ca cechy
-dru¿ynowej FPS (strzelaniny widzianej oczami bohatera) z elementami
-RTS (strategii w czasie rzeczywistym). Gracze mog± wybraæ miêdzy dwoma
-odmiennymi rasami: obcy lub ludzie. Obie dru¿yny mog± budowaæ
-funkcjonalne struktury jak w grach RTS. Struktury te udostêpniaj±
-wiele funkcji, najwa¿niejsz± jest "rodzenie". Wyznaczeni budowniczy
-musz± musz± zapewniæ istnienie "rodz±cych" struktur, w przeciwnym
-przypadku gracze nie bêd± mogli powróciæ do gry po ¶mierci. Inne
-struktury zapewniaj± zautomatyzowan± obronê bazy (do pewnego stopnia),
-funkcje leczenia i wiele wiêcej...
+%description -l pl.UTF-8
+Tremulous to wolnodostÄ™pna gra z otwartymi ÅºrÃ³dÅ‚ami Å‚Ä…czÄ…ca cechy
+druÅ¼ynowej FPS (strzelaniny widzianej oczami bohatera) z elementami
+RTS (strategii w czasie rzeczywistym). Gracze mogÄ… wybraÄ‡ miÄ™dzy dwoma
+odmiennymi rasami: obcy lub ludzie. Obie druÅ¼yny mogÄ… budowaÄ‡
+funkcjonalne struktury jak w grach RTS. Struktury te udostÄ™pniajÄ…
+wiele funkcji, najwaÅ¼niejszÄ… jest "rodzenie". Wyznaczeni budowniczy
+muszÄ… muszÄ… zapewniÄ‡ istnienie "rodzÄ…cych" struktur, w przeciwnym
+przypadku gracze nie bÄ™dÄ… mogli powrÃ³ciÄ‡ do gry po Å›mierci. Inne
+struktury zapewniajÄ… zautomatyzowanÄ… obronÄ™ bazy (do pewnego stopnia),
+funkcje leczenia i wiele wiÄ™cej...
 
-Wynagrodzenie graczy jest ró¿ne w zale¿no¶ci od dru¿yny. Jako ludzie
-gracze otrzymuj± pieni±dze za ka¿dego zabitego obcego. Mo¿na je
-przeznaczyæ na zakup nowej broni lub ulepszenie zbroi. Obcy s±
-wynagradzani w inny sposób. Po zabiciu przeciwnika obcy mo¿e
-przepoczwarzyæ siê w osobnika innej klasy. Im wiêcej ludzi siê zabije
-tym silniejszej klasy obcy s± dostêpni.
+Wynagrodzenie graczy jest rÃ³Å¼ne w zaleÅ¼noÅ›ci od druÅ¼yny. Jako ludzie
+gracze otrzymujÄ… pieniÄ…dze za kaÅ¼dego zabitego obcego. MoÅ¼na je
+przeznaczyÄ‡ na zakup nowej broni lub ulepszenie zbroi. Obcy sÄ…
+wynagradzani w inny sposÃ³b. Po zabiciu przeciwnika obcy moÅ¼e
+przepoczwarzyÄ‡ siÄ™ w osobnika innej klasy. Im wiÄ™cej ludzi siÄ™ zabije
+tym silniejszej klasy obcy sÄ… dostÄ™pni.
 
-Ogólnym celem gry jest ca³kowite wyeliminowanie przeciwnej dru¿yny.
-Osi±ga siê to nie tylko zabijaj±c wszystkich jej graczy lecz tak¿e
-niszcz±c wszystkie "rodz±ce" struktury.
+OgÃ³lnym celem gry jest caÅ‚kowite wyeliminowanie przeciwnej druÅ¼yny.
+OsiÄ…ga siÄ™ to nie tylko zabijajÄ…c wszystkich jej graczy lecz takÅ¼e
+niszczÄ…c wszystkie "rodzÄ…ce" struktury.
 
 %package server
 Summary:	Tremulous dedicated server
-Summary(pl):	Serwer dedykowany Tremulousa
+Summary(pl.UTF-8):   Serwer dedykowany Tremulousa
 Group:		Applications/Games
 Requires(post,preun):	/sbin/chkconfig
 Requires(postun):	/usr/sbin/groupdel
@@ -105,12 +105,12 @@ Provides:	user(tremulous)
 %description server
 Tremulous dedicated server.
 
-%description server -l pl
+%description server -l pl.UTF-8
 Serwer dedykowany Tremulousa.
 
 %package smp
 Summary:	Tremulous for SMP
-Summary(pl):	Tremulous dla SMP
+Summary(pl.UTF-8):   Tremulous dla SMP
 Group:		Applications/Games
 Requires:	%{name}-common = %{version}-%{release}
 
@@ -139,34 +139,34 @@ structures.
 
 Version for multi processor machine.
 
-%description smp -l pl
-Tremulous to wolnodostêpna gra z otwartymi ¼ród³ami ³±cz±ca cechy
-dru¿ynowej FPS (strzelaniny widzianej oczami bohatera) z elementami
-RTS (strategii w czasie rzeczywistym). Gracze mog± wybraæ miêdzy dwoma
-odmiennymi rasami: obcy lub ludzie. Obie dru¿yny mog± budowaæ
-funkcjonalne struktury jak w grach RTS. Struktury te udostêpniaj±
-wiele funkcji, najwa¿niejsz± jest "rodzenie". Wyznaczeni budowniczy
-musz± musz± zapewniæ istnienie "rodz±cych" struktur, w przeciwnym
-przypadku gracze nie bêd± mogli powróciæ do gry po ¶mierci. Inne
-struktury zapewniaj± zautomatyzowan± obronê bazy (do pewnego stopnia),
-funkcje leczenia i wiele wiêcej...
+%description smp -l pl.UTF-8
+Tremulous to wolnodostÄ™pna gra z otwartymi ÅºrÃ³dÅ‚ami Å‚Ä…czÄ…ca cechy
+druÅ¼ynowej FPS (strzelaniny widzianej oczami bohatera) z elementami
+RTS (strategii w czasie rzeczywistym). Gracze mogÄ… wybraÄ‡ miÄ™dzy dwoma
+odmiennymi rasami: obcy lub ludzie. Obie druÅ¼yny mogÄ… budowaÄ‡
+funkcjonalne struktury jak w grach RTS. Struktury te udostÄ™pniajÄ…
+wiele funkcji, najwaÅ¼niejszÄ… jest "rodzenie". Wyznaczeni budowniczy
+muszÄ… muszÄ… zapewniÄ‡ istnienie "rodzÄ…cych" struktur, w przeciwnym
+przypadku gracze nie bÄ™dÄ… mogli powrÃ³ciÄ‡ do gry po Å›mierci. Inne
+struktury zapewniajÄ… zautomatyzowanÄ… obronÄ™ bazy (do pewnego stopnia),
+funkcje leczenia i wiele wiÄ™cej...
 
-Wynagrodzenie graczy jest ró¿ne w zale¿no¶ci od dru¿yny. Jako ludzie
-gracze otrzymuj± pieni±dze za ka¿dego zabitego obcego. Mo¿na je
-przeznaczyæ na zakup nowej broni lub ulepszenie zbroi. Obcy s±
-wynagradzani w inny sposób. Po zabiciu przeciwnika obcy mo¿e
-przepoczwarzyæ siê w osobnika innej klasy. Im wiêcej ludzi siê zabije
-tym silniejszej klasy obcy s± dostêpni.
+Wynagrodzenie graczy jest rÃ³Å¼ne w zaleÅ¼noÅ›ci od druÅ¼yny. Jako ludzie
+gracze otrzymujÄ… pieniÄ…dze za kaÅ¼dego zabitego obcego. MoÅ¼na je
+przeznaczyÄ‡ na zakup nowej broni lub ulepszenie zbroi. Obcy sÄ…
+wynagradzani w inny sposÃ³b. Po zabiciu przeciwnika obcy moÅ¼e
+przepoczwarzyÄ‡ siÄ™ w osobnika innej klasy. Im wiÄ™cej ludzi siÄ™ zabije
+tym silniejszej klasy obcy sÄ… dostÄ™pni.
 
-Ogólnym celem gry jest ca³kowite wyeliminowanie przeciwnej dru¿yny.
-Osi±ga siê to nie tylko zabijaj±c wszystkich jej graczy lecz tak¿e
-niszcz±c wszystkie "rodz±ce" struktury.
+OgÃ³lnym celem gry jest caÅ‚kowite wyeliminowanie przeciwnej druÅ¼yny.
+OsiÄ…ga siÄ™ to nie tylko zabijajÄ…c wszystkich jej graczy lecz takÅ¼e
+niszczÄ…c wszystkie "rodzÄ…ce" struktury.
 
 Wersja dla maszyny wieloprocesorowej.
 
 %package common
 Summary:	Common files for Tremulous
-Summary(pl):	Pliki wspólne dla Tremulousa
+Summary(pl.UTF-8):   Pliki wspÃ³lne dla Tremulousa
 Group:		Applications/Games
 Requires(triggerpostun):	/usr/sbin/groupdel
 Requires(triggerpostun):	/usr/sbin/userdel
@@ -175,8 +175,8 @@ Requires:	%{name}-data = %{version}
 %description common
 Common files for Tremulous server and player game.
 
-%description common -l pl
-Pliki wspólne Tremulous dla serwera i trybu gracza.
+%description common -l pl.UTF-8
+Pliki wspÃ³lne Tremulous dla serwera i trybu gracza.
 
 %prep
 %setup -q -n %{name}-%{version}-src
