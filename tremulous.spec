@@ -4,7 +4,7 @@
 %bcond_without	openal		# don't use OpenAL
 
 Summary:	First-person shooter with elements of strategy game
-Summary(pl.UTF-8):   Strzelanina w pierwszej osobie z elementami strategii
+Summary(pl.UTF-8):	Strzelanina w pierwszej osobie z elementami strategii
 Name:		tremulous
 Version:	1.1.0
 Release:	2
@@ -85,7 +85,7 @@ niszcząc wszystkie "rodzące" struktury.
 
 %package server
 Summary:	Tremulous dedicated server
-Summary(pl.UTF-8):   Serwer dedykowany Tremulousa
+Summary(pl.UTF-8):	Serwer dedykowany Tremulousa
 Group:		Applications/Games
 Requires(post,preun):	/sbin/chkconfig
 Requires(postun):	/usr/sbin/groupdel
@@ -110,7 +110,7 @@ Serwer dedykowany Tremulousa.
 
 %package smp
 Summary:	Tremulous for SMP
-Summary(pl.UTF-8):   Tremulous dla SMP
+Summary(pl.UTF-8):	Tremulous dla SMP
 Group:		Applications/Games
 Requires:	%{name}-common = %{version}-%{release}
 
@@ -166,7 +166,7 @@ Wersja dla maszyny wieloprocesorowej.
 
 %package common
 Summary:	Common files for Tremulous
-Summary(pl.UTF-8):   Pliki wspólne dla Tremulousa
+Summary(pl.UTF-8):	Pliki wspólne dla Tremulousa
 Group:		Applications/Games
 Requires(triggerpostun):	/usr/sbin/groupdel
 Requires(triggerpostun):	/usr/sbin/userdel
