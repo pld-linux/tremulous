@@ -26,6 +26,7 @@ BuildRequires:	OpenAL-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	SDL-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
+BuildRequires:	sed >= 4.0
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -183,6 +184,9 @@ Pliki wspólne Tremulous dla serwera i trybu gracza.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+
+%{__sed} -i -e 's/-Werror//' src/tools/asm/Makefile
+
 cat << EOF > Makefile.local
 BUILD_CLIENT	= 1
 BUILD_CLIENT_SMP= 1
