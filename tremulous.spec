@@ -186,6 +186,7 @@ Pliki wspólne Tremulous dla serwera i trybu gracza.
 %patch2 -p1
 
 %{__sed} -i -e 's/-Werror//' src/tools/asm/Makefile
+%{__sed} -i -e '/OP_BLOCK_COPY not dword aligned/s#^#//#' src/qcommon/vm_interpreted.c
 
 cat << EOF > Makefile.local
 BUILD_CLIENT	= 1
