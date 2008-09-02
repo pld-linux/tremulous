@@ -16,7 +16,7 @@ Source2:	tremded.init
 Source3:	tremded.sysconfig
 Source4:	%{name}.desktop
 Source5:	%{name}-smp.desktop
-Patch0:		%{name}-tjw.patch
+Patch0:		%{name}-backport.patch
 Patch1:		%{name}-Makefile.patch
 Patch2:		%{name}-LIBDIR.patch
 Patch3:		%{name}-alpha.patch
