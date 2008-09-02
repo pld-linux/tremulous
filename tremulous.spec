@@ -187,36 +187,45 @@ Pliki wspólne Tremulous dla serwera i trybu gracza.
 
 %{__sed} -i -e 's/-Werror//' src/tools/asm/Makefile
 %{__sed} -i -e '/OP_BLOCK_COPY not dword aligned/s#^#//#' src/qcommon/vm_interpreted.c
-
-cat << EOF > Makefile.local
-BUILD_CLIENT	= 1
-BUILD_CLIENT_SMP= 1
-BUILD_SERVER	= 1
-BUILD_GAME_SO	= 1
-BUILD_GAME_QVM	= 0
-%if !%{with openal}
-USE_OPENAL	= 0
-%endif
-EOF
+%{__sed} -i -e 's/^all:.*/all: makedirs tools targets/' Makefile
+%{__sed} -i -e 's/$(CC)  -o $@/$(CC) -o $@ $(REAL_LDFLAGS)/' Makefile
 
 %build
-CFLAGS="%{rpmcflags}"
-CFLAGS="$CFLAGS -DDEFAULT_BASEDIR=\\\"%{_datadir}/games/%{name}\\\""
-CFLAGS="$CFLAGS -DLIBDIR=\\\"%{_libdir}/%{name}\\\""
-CFLAGS="$CFLAGS -Wall -Wimplicit -Wstrict-prototypes"
-CFLAGS="$CFLAGS -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 $(sdl-config --cflags)"
-%if %{with openal}
-CFLAGS="$CFLAGS -DUSE_OPENAL=1"
-%endif
-CFLAGS="$CFLAGS -DNDEBUG -MMD"
-%ifnarch %{ix86} %{x8664}
-CFLAGS="$CFLAGS -DNO_VM_COMPILED"
+cat << 'EOF' > Makefile.local
+BUILD_CLIENT    = 1
+BUILD_CLIENT_SMP= 1
+BUILD_SERVER    = 1
+BUILD_GAME_SO   = 1
+BUILD_GAME_QVM  = 0
+%if !%{with openal}
+USE_OPENAL      = 0
 %endif
 
-%{__make} makedirs tools targets \
-	B="release-%{_target}"	\
-	CC="%{__cc}"		\
-	CFLAGS="$CFLAGS"
+override BR = rel
+override B = rel
+
+override CFLAGS := %{rpmcflags} \
+        -DDEFAULT_BASEDIR=\"%{_datadir}/games/%{name}\" \
+        -DLIBDIR=\"%{_libdir}/%{name}\" \
+        -Wall -Wimplicit -Wstrict-prototypes \
+        -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 %(sdl-config --cflags) \
+%if %{with openal}
+        -DUSE_OPENAL=1 \
+%endif
+%ifnarch %{ix86} %{x8664}
+        -DNO_VM_COMPILED \
+%endif  
+        -DNDEBUG -MMD
+
+override LCC_CFLAGS := $(CFLAGS) -MMD
+override Q3ASM_CFLAGS := $(CFLAGS)
+
+REAL_LDFLAGS := %{rpmldflags}
+
+override CC := %{__cc}
+EOF
+
+%{__make} all
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -225,10 +234,10 @@ install -d $RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/%{name}/base} \
 	$RPM_BUILD_ROOT/var/games/tremulous
 
-install release-%{_target}/%{name}.* $RPM_BUILD_ROOT%{_bindir}/%{name}
-install release-%{_target}/%{name}-smp.* $RPM_BUILD_ROOT%{_bindir}/%{name}-smp
-install release-%{_target}/tremded.* $RPM_BUILD_ROOT%{_bindir}/tremded
-install release-%{_target}/base/*.so $RPM_BUILD_ROOT%{_libdir}/%{name}/base
+install rel/%{name}.* $RPM_BUILD_ROOT%{_bindir}/%{name}
+install rel/%{name}-smp.* $RPM_BUILD_ROOT%{_bindir}/%{name}-smp
+install rel/tremded.* $RPM_BUILD_ROOT%{_bindir}/tremded
+install rel/base/*.so $RPM_BUILD_ROOT%{_libdir}/%{name}/base
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/tremded
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/tremded
