@@ -7,7 +7,7 @@ Summary:	First-person shooter with elements of strategy game
 Summary(pl.UTF-8):	Strzelanina w pierwszej osobie z elementami strategii
 Name:		tremulous
 Version:	1.1.0
-Release:	2
+Release:	2.5
 License:	GPL
 Group:		Applications/Games
 Source0:	%{name}-%{version}-src.tar.gz
@@ -16,19 +16,22 @@ Source2:	tremded.init
 Source3:	tremded.sysconfig
 Source4:	%{name}.desktop
 Source5:	%{name}-smp.desktop
-Patch0:		%{name}-Makefile.patch
-Patch1:		%{name}-LIBDIR.patch
-Patch2:		%{name}-alpha.patch
+Patch0:		%{name}-tjw.patch
+Patch1:		%{name}-Makefile.patch
+Patch2:		%{name}-LIBDIR.patch
+Patch3:		%{name}-alpha.patch
 URL:		http://www.tremulous.net/
 %if %{with openal}
 BuildRequires:	OpenAL-devel
 %endif
 BuildRequires:	OpenGL-devel
 BuildRequires:	SDL-devel
+BuildRequires:	curl-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	OpenGL
+Suggests:	curl-lib
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags	-ffast-math -funroll-loops -fomit-frame-pointer -fno-strict-aliasing
@@ -181,9 +184,10 @@ Pliki wspólne Tremulous dla serwera i trybu gracza.
 
 %prep
 %setup -q -n %{name}-%{version}-src
-%patch0 -p1
+%patch0 -p0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %{__sed} -i -e 's/-Werror//' src/tools/asm/Makefile
 %{__sed} -i -e '/OP_BLOCK_COPY not dword aligned/s#^#//#' src/qcommon/vm_interpreted.c
@@ -201,21 +205,25 @@ BUILD_GAME_QVM  = 0
 USE_OPENAL      = 0
 %endif
 
+USE_LOCAL_HEADERS = 0
+USE_CURL_DLOPEN = 1
+
 override BR = rel
 override B = rel
 
 override CFLAGS := %{rpmcflags} \
-        -DDEFAULT_BASEDIR=\"%{_datadir}/games/%{name}\" \
-        -DLIBDIR=\"%{_libdir}/%{name}\" \
-        -Wall -Wimplicit -Wstrict-prototypes \
-        -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 %(sdl-config --cflags) \
+	-DDEFAULT_BASEDIR=\"%{_datadir}/games/%{name}\" \
+	-DLIBDIR=\"%{_libdir}/%{name}\" \
+	-Wall -Wimplicit -Wstrict-prototypes \
+	-DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 %(sdl-config --cflags) \
+	-DUSE_CURL=1 -DUSE_CURL_DLOPEN=1 \
 %if %{with openal}
-        -DUSE_OPENAL=1 \
+	-DUSE_OPENAL=1 \
 %endif
 %ifnarch %{ix86} %{x8664}
-        -DNO_VM_COMPILED \
+	-DNO_VM_COMPILED \
 %endif  
-        -DNDEBUG -MMD
+	-DNDEBUG -MMD
 
 override LCC_CFLAGS := $(CFLAGS) -MMD
 override Q3ASM_CFLAGS := $(CFLAGS)
