@@ -9,7 +9,7 @@ Name:		tremulous
 Version:	1.1.0
 Release:	2.5
 License:	GPL
-Group:		Applications/Games
+Group:		X11/Applications/Games
 Source0:	%{name}-%{version}-src.tar.gz
 # Source0-md5:	13382bfd1c17677ff97109a457f4c488
 Source2:	tremded.init
