@@ -184,10 +184,10 @@ Pliki wspólne Tremulous dla serwera i trybu gracza.
 
 %prep
 %setup -q -n %{name}-%{version}-src
-%patch0 -p0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P0 -p0
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 
 %{__sed} -i -e 's/-Werror//' src/tools/asm/Makefile
 %{__sed} -i -e '/OP_BLOCK_COPY not dword aligned/s#^#//#' src/qcommon/vm_interpreted.c
